@@ -1,0 +1,19 @@
+<h1>Listing all Rooms</h1>
+<p>
+  <%= link_to "Create new room", new_room_path %>
+</p>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <% @rooms.each do |room| %>
+  <tr>
+    <td><%= room.title %></td>
+    <td><%= room.description %></td>
+    <td><%= link_to '수정하기', edit_room_path(room) %></td>
+    <td><%= link_to '정보보기', room_path(room) %></td>
+    <td><%= link_to '지우기', method: :delete, data: {confirm:"정말로 지우시겠습니까?"} %> </td>
+  </tr>
+  <% end %>
+</table>
