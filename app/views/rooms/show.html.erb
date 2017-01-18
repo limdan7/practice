@@ -1,11 +1,10 @@
-<h1>Showing selected room</h1>
-
-<p>
-  Title: <%= @room.title %>
-</p>
-<p>
-  Description : <%= @room.description %>
-</p>
-
-<%= link_to 'Edit this article', edit_room_path(@room) %>
-<%= link_to 'Back to the listing', rooms_path %>
+<h2 align="center"> 제목: <%= @room.title %> </h2>
+<div class="well col-xs-8 col-xs-offset-2">
+  <h4 class="center description"><strong>설명: </strong></h4>
+  <hr>
+  <%= simple_format(@room.description) %>
+  <div class="room-actions">
+    <%= link_to '글 수정하기', edit_room_path(@room), class: "btn btn-xs btn-primary" %>
+    <%= link_to '글 삭제하기', room_path(@room), method: :delete, data: {confirm: "정말로 삭제할까요?"}, class: "btn btn-xs btn-danger" %>
+    <%= link_to "전체글 보기", rooms_path, class: "btn btn-xs btn-success" %>
+  </div>

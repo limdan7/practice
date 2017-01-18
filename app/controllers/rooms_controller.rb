@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     if @room.save
-      flash[:notice] = "성공적으로 포스팅이 작성되었습니다."
+      flash[:success] = "성공적으로 포스팅이 작성되었습니다."
       redirect_to room_path(@room)
     else
       render 'new'
@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
   
   def update
     if @room.save
-      flash[:notice] = "성공적으로 업데이트 되었습니다."
+      flash[:success] = "성공적으로 업데이트 되었습니다."
       redirect_to room_path(@room)
     else
       render 'edit'
@@ -37,7 +37,7 @@ class RoomsController < ApplicationController
   
   def destroy
     @room.destroy
-    flash[:notice] = "포스팅이 성공적으로 지워졌습니다."
+    flash[:success] = "포스팅이 성공적으로 지워졌습니다."
     redirect_to rooms_path
   end
   

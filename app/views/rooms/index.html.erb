@@ -1,19 +1,20 @@
-<h1>Listing all Rooms</h1>
-<p>
-  <%= link_to "Create new room", new_room_path %>
-</p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-  <% @rooms.each do |room| %>
-  <tr>
-    <td><%= room.title %></td>
-    <td><%= room.description %></td>
-    <td><%= link_to '수정하기', edit_room_path(room) %></td>
-    <td><%= link_to '정보보기', room_path(room) %></td>
-    <td><%= link_to '지우기', method: :delete, data: {confirm:"정말로 지우시겠습니까?"} %> </td>
-  </tr>
-  <% end %>
-</table>
+<h1 align="center">전체 방 게시</h1>
+
+<% @rooms.each do |room| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="room-title">
+          <%= link_to room.title, room_path(room)%>
+        </div>
+        <div class="room-body">
+          <%= truncate(room.description, length: 100) %>
+        </div>
+        <div class="room-actions">
+          <%= link_to '글 수정하기', edit_room_path(room), class: "btn btn-xs btn-primary" %>
+          <%= link_to '글 삭제하기', room_path(room), method: :delete, data: {confirm: "정말로 삭제할까요?"}, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
